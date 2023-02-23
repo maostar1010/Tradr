@@ -4,6 +4,3 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 def login(response):
     return HttpResponseRedirect("/login")
-
-def register(response):
-    return render(response, "web\\register.html", {})
