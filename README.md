@@ -11,7 +11,7 @@ University Marketplace where students and faculty members can connect over their
 **3. Run the following code**
 ```
 cd Tradr
-pip -r requirements.txt
+pip install -r requirements.txt
 ```
 **4. Run the server to open the webpage**
 ```
