@@ -4,6 +4,7 @@ University Marketplace where students and faculty members can connect over their
 
 ### To work on the project:
 **1. Clone (or pull) the repository to a local machine**
+
 **2. Activate the virtual environment**
 ```
 .\test_env\Scripts\activate
@@ -12,6 +13,7 @@ University Marketplace where students and faculty members can connect over their
 ```
 cd Tradr
 pip install -r requirements.txt
+python manage.py migrate
 ```
 **4. Run the server to open the webpage**
 ```
