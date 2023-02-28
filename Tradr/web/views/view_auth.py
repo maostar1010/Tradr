@@ -13,7 +13,7 @@ def login(response):
     # if response.POST.get("login"):
     #   authentication
     if response.user.is_authenticated:
-        return redirect('/home')
+        return redirect('/')
     
     if response.method == "POST":
         form = AuthenticationForm(response, data=response.POST)
@@ -25,7 +25,7 @@ def login(response):
             if user is not None:
                 auth_login(response, user)
                 messages.success(response, f"Welcome back, <b>{user.username}</b>!")
-                return redirect("/home")
+                return redirect("/")
         else:
             for error in list(form.error.values()):
                 messages.error(response, error)
@@ -57,7 +57,7 @@ def register(response):
             user = form.save() # saving the info
             auth_login(response, user) # log in using the registered info
             messages.success(response, f"New account created: {user.username}")
-            return redirect('/home') # redirect to home page
+            return redirect('/') # redirect to home page
 
         else:
             for error in list(form.errors.values()):
