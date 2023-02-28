@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+{% load crispy_forms_tags %}
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,22 +38,26 @@
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5 FONT">LOGIN</h2>
-            <form class="FONT">
+            <form class="FONT" method="POST" action="">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                {{form|crispy}}
+              </fieldset>
               <!-- 2 column grid layout with text inputs for the first and last names -->
             
   
               <!-- Email input -->
-              <div class="form-outline mb-4">
+              <!-- <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example3">Email address</label>
                 <input type="email" id="form3Example3" class="form-control" />
                 
-              </div>
+              </div> -->
   
               <!-- Password input -->
-              <div class="form-outline mb-4">
+              <!-- <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example4">Password</label>
                 <input type="password" id="form3Example4" class="form-control" />
-              </div>
+              </div> -->
   
               
   

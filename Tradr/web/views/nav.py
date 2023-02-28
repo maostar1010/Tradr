@@ -4,3 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 def login(response):
     return HttpResponseRedirect("/login")
+
+def home(response):
+    return render(response, "web\home.html", {})
