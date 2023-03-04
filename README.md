@@ -35,7 +35,7 @@ py -m pip install -r requirements.txt
 python manage.py migrate
 
 // Unix/macOS
-pytho3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 python manage.py migrate
 ```
 **4. Run the server to open the webpage**
