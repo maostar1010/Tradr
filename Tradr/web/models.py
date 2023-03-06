@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
     
 class Listing(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=User.objects.first())
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True )
     title = models.CharField(max_length=200,null=True)
     date = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7,decimal_places=2)
