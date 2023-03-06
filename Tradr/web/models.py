@@ -17,5 +17,41 @@ class Image(models.Model):
 
     def __str__(self):
         return f"Image for {self.listing.title}: {self.image.name}"
+    
+class Category(models.Model):
+    title = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.title
 
+class ListingCategory(models.Model):
+    listing = models.ForeignKey(Listing,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.category.title}: {self.listing.title}"
+    
+class Review(models.Model):
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_reviews')
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seller_reviews')
+    comment = models.CharField(max_length=500,null=True)
+    rating = models.IntegerField()
+    
+    def __str__(self):
+        return f"Review by {self.buyer.username} on {self.seller.username}"
+    
+class Complaint(models.Model):
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE)
+    listing = models.ForeignKey(Listing,on_delete=models.CASCADE)
+    text = models.CharField(max_length=500,null=True)
+    status = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Complaint by {self.reporter.username} on {self.listing.title}"
+    
+class TransactionReport(models.Model):
+    listing = models.ForeignKey(Listing,on_delete=models.CASCADE)
+    finalPrice = models.DecimalField(max_digits=7,decimal_places=2)
+
+    def __str__(self):
+        return f"Transaction Report of {self.listing.title}"
