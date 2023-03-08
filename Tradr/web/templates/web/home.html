@@ -1,35 +1,61 @@
 <!-- exampe -->
 <!-- could be turned into the main page that shows up upon login -->
-<h1>Home</h1>
 
+{% extends "web/base.html" %}
+<!-- {% load static %} -->
 
-
-<div>
-    <h2>Newest Items</h2>
-    <div>
-        {%for listing in listings %}
-        {%for image in images %}
-            {% if image.listing == listing %}
-            {% with curr_image=image %}
-            {% endwith %}
-            {%endif%}
-        {% endfor %}
-            <div>
-                <a href="#">
-                    <div>
-                        <img src="{{ curr_image }}">
-                    </div>
-                    <div>
-                        <h2>{{listing.title}}</h2>
-                        <p>Price: {{listing.price}}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+{% block content %}
+<!-- Image header -->
+  <div class="w3-display-container w3-container">
+    <img src="/static/web/images/home.png" alt="Homepage" style="width:100%">
+    <div class="w3-display-topleft w3-text-red" style="padding:24px 48px">
+      <h1 class="w3-jumbo w3-hide-small">WELCOME</h1>
+      <!-- <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1> -->
+      <h1 class="w3-hide-small">Find What You Need, Sell What You Don't</h1>
+      <p><a href="#jeans" class="w3-button w3-deep-orange w3-padding-large w3-large">START NOW</a></p>
     </div>
+  </div>
 
+  <!-- Product grid -->
+  <h2>Newest Items</h2>
+  <div class="w3-container w3-pale-yellow w3-padding-32 " >
+    <div class="w3-row ">
+        <div class="w3-col l3 s6" style="padding:10px 10px" ></div>
+          {%for listing in listings %}
+            {%for image in images %}
+                {% if image.listing == listing %}
+                {% with curr_image=image %}
+                {% endwith %}
+                {%endif%}
+            {% endfor %}
+                <div class="w3-container">
+                    <a href="#">
+                        <div class="w3-display-container">
+                            <img src="{{ curr_image }}" style="width:100%">
+                            <p>{{curr_image}}</p>
+                        </div>
+                        <div>
+                            <h2>{{listing.title}}</h2>
+                            <p>Price: {{listing.price}}</p>
+                        </div>
+                    </a>
+                </div>
+          {% endfor %}
+        </div>
+    </div>
+  
+
+<!-- Make a Post section -->
+<div class="w3-container w3-sand w3-padding-32 "  style = "margin: 2% 0% " >
+    
+  <h1>Want To Make A Posting?</h1>
+  <p>Post things that you would like to sell with little to no efforts and make a deal!</p>
+  <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p> -->
+  <button type="button" class="w3-button w3-deep-orange w3-margin-bottom"><a href="/create_listing">Make a Posting</a></button>
 </div>
 
+<a href="/logout"><button>Log out</button></a> <!-- move the logout button to top -->
 
+<div class="w3-container w3-win8-sienna w3-center w3-padding-24">©Tradr'23 </div>
 
-<a href="/logout"><button>Log out</button></a>
+{% endblock content %}

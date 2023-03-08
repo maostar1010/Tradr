@@ -6,9 +6,9 @@ class Listing(models.Model):
     title = models.CharField(max_length=200,null=True)
     date = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7,decimal_places=2)
-    tag = models.CharField(max_length=200,null=True)
+    tag = models.CharField(max_length=200,null=True) # maybe we can get rid of it
     description = models.CharField(max_length=500, null=True)
-    condition = models.CharField(max_length=200, null=True)
+    condition = models.CharField(max_length=200, null=True) # can we make it a drop down menu: new, like-new, mint, used
 
 
     def __str__(self):
@@ -23,6 +23,7 @@ class Image(models.Model):
     
 class Category(models.Model):
     title = models.CharField(max_length=200)
+    # need to add html paths prob for dynamic nav bar when adding more categories later on
 
     def __str__(self):
         return self.title
