@@ -2,4 +2,34 @@
 <!-- could be turned into the main page that shows up upon login -->
 <h1>Home</h1>
 
+
+
+<div>
+    <h2>Newest Items</h2>
+    <div>
+        {%for listing in listings %}
+        {%for image in images %}
+            {% if image.listing == listing %}
+            {% with curr_image=image %}
+            {% endwith %}
+            {%endif%}
+        {% endfor %}
+            <div>
+                <a href="#">
+                    <div>
+                        <img src="{{ curr_image }}">
+                    </div>
+                    <div>
+                        <h2>{{listing.title}}</h2>
+                        <p>Price: {{listing.price}}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+
 <a href="/logout"><button>Log out</button></a>
