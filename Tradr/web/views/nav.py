@@ -13,9 +13,5 @@ def home(response):
             'listings' : listings,
             'images' : images,
             'curr_image' : curr_image,
-
-
-
-
         })
     return HttpResponseRedirect('/login')
