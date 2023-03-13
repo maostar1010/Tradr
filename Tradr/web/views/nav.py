@@ -7,13 +7,13 @@ def home(response):
     if response.user.is_authenticated:
         listings = Listing.objects.all()
         images = Image.objects.all()
-        curr_image = Image.objects.all()
+        # curr_image = Image.objects.all()
         categories = Category.objects.all()
 
         return render(response, "web\home.html", {
             'listings' : listings,
             'images' : images,
-            'curr_image' : curr_image,
+            # 'curr_image' : curr_image,
             'categories' : categories,
         })
     return HttpResponseRedirect('/login')

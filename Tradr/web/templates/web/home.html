@@ -18,31 +18,31 @@
 
   <!-- Product grid -->
   <h2>Newest Items</h2>
-  <div class="w3-container w3-pale-yellow w3-padding-32" >
+  <div class="w3-container w3-pale-yellow w3-padding-32 " >
     <div class="w3-row ">
-        <div class="w3-col l3 s6" style="padding:10px 10px" ></div>
-          <div class="w3-container">
-            {%for listing in listings %}
-              <a href="#">
-                <div class="w3-display-container">
-                  {% with listing_images=listing.images.all %}
-                    {% if listing_images %}
-                      {% with curr_image=listing_images.0.images.url %}
-                        <img src="{{curr_image}}" style="width:100%">
-                        <p>{{curr_image}}</p>
-                      {% endwith %}
-                    {%endif%}
-                  {% endwith %}
-                </div>
-                <div>
-                    <h2>{{listing.title}}</h2>
-                    <p>Price: {{listing.price}}</p>
-                </div>
-              </a>
-            {% endfor %}
+      <div class="w3-col l3 s6" style="padding:10px 10px" ></div>
+        <div class="w3-container">
+          {% for listing in listings %}
+            <a href="#">
+              <div class="w3-display-container">
+                {% with listing_images=listing.images.all %}
+                  {% if listing_images %}
+                    {% with curr_image=listing_images.0.image.url %}
+                      <img src="{{ curr_image }}" style="width:20%">
+                    {% endwith %}
+                  {% endif %}
+                {% endwith %}
+              </div>
+              <div>
+                <h2>{{listing.title}}</h2>
+                <p>Price: {{listing.price}}</p>
+              </div>
+            </a>
+          {% endfor %}
         </div>
+      </div>
     </div>
-  </div>
+  
   
 
 <!-- Make a Post section -->
