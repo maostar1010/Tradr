@@ -10,6 +10,7 @@ urlpatterns=[
     path("register/", view_auth.register, name="register"),
     path('create_listing/', CreateListing.as_view(), name='create_listing'),
     path("home/", nav.home, name="home"),
-]
+    path("<category>/", nav.cat_detail, name="category-detail"),
+] 
 
 urlpatterns += staticfiles_urlpatterns()
