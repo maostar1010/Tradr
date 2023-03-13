@@ -13,10 +13,13 @@ def home(response):
         return render(response, "web\home.html", {
             'listings' : listings,
             'images' : images,
-            # 'curr_image' : curr_image,
             'categories' : categories,
         })
     return HttpResponseRedirect('/login')
 
-def books(response):
-    return render(response, "web\\books.html", {})
+def cat_detail(response, category):
+    categories = Category.objects.all()
+    # can we filter listings for the specific category chosen here?
+    #  listings = listing....??
+    # then pass the listings and print all of them in the category.html
+    return render(response, "web\\category.html", {'category':category, 'categories': categories})
