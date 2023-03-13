@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import nav, view_auth
+from .views import nav, view_auth, search
 from .views.create_listing import CreateListing
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -11,6 +11,7 @@ urlpatterns=[
     path('create_listing/', CreateListing.as_view(), name='create_listing'),
     path("home/", nav.home, name="home"),
     path("Books/", nav.books, name="books"),
+    path("search/", search.search, name="search"),
 ] 
 
 urlpatterns += staticfiles_urlpatterns()

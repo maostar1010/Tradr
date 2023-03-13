@@ -20,3 +20,6 @@ def home(response):
 
 def books(response):
     return render(response, "web\\books.html", {})
+
+
+
