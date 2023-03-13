@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import nav, view_auth
+from .views.create_complaint import CreateComplaint
 from .views.create_listing import CreateListing
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -11,6 +12,7 @@ urlpatterns=[
     path('create_listing/', CreateListing.as_view(), name='create_listing'),
     path("home/", nav.home, name="home"),
     path("<category>/", nav.cat_detail, name="category-detail"),
+    path('complaint/create/<int:listing_id>/', CreateComplaint.as_view(), name='create_complaint'),
 ] 
 
 urlpatterns += staticfiles_urlpatterns()
