@@ -13,13 +13,9 @@ def home(response):
         return render(response, "web\home.html", {
             'listings' : listings,
             'images' : images,
-            # 'curr_image' : curr_image,
             'categories' : categories,
         })
     return HttpResponseRedirect('/login')
 
 def books(response):
     return render(response, "web\\books.html", {})
-
-
-

@@ -23,3 +23,7 @@ def search(request):
             'query': query,
         })
     
+
+
+
+    
