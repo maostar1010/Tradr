@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
 
+<title>
+    {% block title %}
+        Home
+    {% endblock %}
+</title>
+
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -54,6 +60,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </head>
 
 <body class="w3-content" style="max-width:1200px">
+    <!-- error or success message display -->
+    <div class="messages pt-2 mt-2 mb-2">
+        {% for message in messages %}
+        <div class="alert {{message.tags}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{message}}
+        </div>
+        {% endfor %}
+    </div>
     
 <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
