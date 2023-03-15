@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-    
+
+class Category(models.Model):
+    title = models.CharField(max_length=200)
+    # need to add html paths prob for dynamic nav bar when adding more categories later on
+
+    def __str__(self):
+        return self.title
+
+
 class Listing(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200,null=True)
@@ -9,6 +17,7 @@ class Listing(models.Model):
     tag = models.CharField(max_length=200,null=True) # maybe we can get rid of it
     description = models.CharField(max_length=500, null=True)
     condition = models.CharField(max_length=200, null=True) # can we make it a drop down menu: new, like-new, mint, used
+    category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True, related_name='listing')
 
 
     def __str__(self):
@@ -21,12 +30,7 @@ class Image(models.Model):
     def __str__(self):
         return f"Image for {self.listing.title}: {self.image.name}"
     
-class Category(models.Model):
-    title = models.CharField(max_length=200)
-    # need to add html paths prob for dynamic nav bar when adding more categories later on
 
-    def __str__(self):
-        return self.title
 
 class ListingCategory(models.Model):
     listing = models.ForeignKey(Listing,on_delete=models.CASCADE)

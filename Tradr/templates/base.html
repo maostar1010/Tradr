@@ -32,7 +32,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
             width: 100%;
             margin-bottom: 10px;
         }
-          
         .icon {
             padding: 10px;
             color: black;
@@ -91,37 +90,38 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       </div>
       <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium"></div>
             {% for category in categories %}
-                <div>
-                    <a href="/{{category.title}}" class="w3-bar-item w3-button">
-                        {{category.title}}
-                    </a>
-                </div>
+            <div>
+                <a href="/{{category.title}}" class="w3-bar-item w3-button">
+                    {{category.title}}
+                </a>
+            </div>
             {% endfor %}
-      </div>
-    </div>
-    <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+        </div>
+        </div>
+        <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
     <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a> -->
-  </nav>
+    </nav>
 
     <!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-white w3-xlarge">
-    
-    <div class="w3-bar-item w3-padding-24 w3-wide">
-        <a href="/"><img src="/static/web/images/logo.png" alt="Homepage" style="width:19%"></a>
-    </div>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
+    <header class="w3-bar w3-top w3-hide-large w3-white w3-xlarge">
+
+        <div class="w3-bar-item w3-padding-24 w3-wide">
+            <img src="/static/web/images/logo.png" alt="Homepage" style="width:19%">
+        </div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
+                class="fa fa-bars"></i></a>
+    </header>
 
     <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:250px">
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
-        
         <!-- Top header -->
         <header class="w3-container w3-xlarge">
             <!-- <p class="w3-left">Jeans</p> -->
