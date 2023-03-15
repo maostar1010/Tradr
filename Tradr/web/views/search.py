@@ -11,7 +11,7 @@ def search(request):
     categories = Category.objects.all()
     
 
-    print(query)
+    print(images)
     print()
 
 

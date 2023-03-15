@@ -6,7 +6,7 @@
 
 <div class="w3-container">
     {% for listing in listings %}
-      <a href="#">
+    <a href="{% url 'Item-detail' listing.id %}">
         <div class="w3-display-container">
           {% with listing_images=listing.images.all %}
             {% if listing_images %}

@@ -38,3 +38,4 @@ def cat_detail(request, category):
 
 
 
+

@@ -9,7 +9,7 @@
       <div class="w3-col l3 s6" style="padding:10px 10px" ></div>
         <div class="w3-container">
           {% for listing in listings %}
-            <a href="#">
+          <a href="{% url 'Item-detail' listing.id %}">
               <div class="w3-display-container">
                 {% with listing_images=listing.images.all %}
                   {% if listing_images %}
