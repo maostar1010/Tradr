@@ -7,10 +7,11 @@ def detail(request, pk):
     listings = get_object_or_404(Listing ,pk = pk)
     images =  Image.objects.filter(listing_id=pk)
     print(images)
+    categories = Category.objects.all()
 
 
     return render(request, "web/itemdescp.html", {
         'listings': listings,
         'I':images,
-        
+        'categories':categories,
     })

@@ -10,7 +10,7 @@ def home(response):
         # curr_image = Image.objects.all()
         categories = Category.objects.all()
 
-        return render(response, "web\home.html", {
+        return render(response, "web\\home.html", {
             'listings' : listings,
             'images' : images,
             'categories' : categories,
