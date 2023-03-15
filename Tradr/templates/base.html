@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Homepage</title>
+<!-- <title>Homepage</title> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -80,7 +80,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
 
     <p class="w3-bar-block w3-white w3-left-align w3-padding-large">Welcome  <i class=" display-3 text-info">{{request.user.username|title}}</i>!
+    <br><br><a href="/logout">Log out</a> 
     </p>
+    <!-- <p> </p>move the logout button to top -->
 
     <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
       <a href="/home" class="w3-bar-item w3-button">Home</a>
@@ -103,13 +105,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </nav>
 
     <!-- Top menu on small screens -->
-    <header class="w3-bar w3-top w3-hide-large w3-white w3-xlarge">
+<header class="w3-bar w3-top w3-hide-large w3-white w3-xlarge">
     
     <div class="w3-bar-item w3-padding-24 w3-wide">
         <img src="/static/web/images/logo.png" alt="Homepage" style="width:19%">
     </div>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    </header>
+</header>
 
     <!-- Overlay effect when opening sidebar on small screens -->
     <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -169,8 +171,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p> -->
     <button type="button" class="w3-button w3-deep-orange w3-margin-bottom"><a href="/create_listing">Make a Posting</a></button>
   </div>
-  
-  <a href="/logout"><button>Log out</button></a> <!-- move the logout button to top -->
   
   <div class="w3-container w3-win8-sienna w3-center w3-padding-24">©Tradr'23 </div>
   
