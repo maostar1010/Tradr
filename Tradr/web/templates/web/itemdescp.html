@@ -24,12 +24,12 @@
             <p>Date: {{listings.date }}</p>
             <p>Description: {{listings.description }}</p>
             <p>condition : {{listings.condition  }}</p>
-            <p> category : {{listings.category }}</p>  
+            <p> category : {{listings.category }}</p> 
+            <a href="{% url 'delete' listings.id %}">Delete</a> 
             </div>
     </div>
     </div>
 </div>
 {% endblock content %}
-
 
 

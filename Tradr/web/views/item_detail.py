@@ -14,3 +14,9 @@ def detail(request, pk):
         'I':images,
         
     })
+
+
+def delete(request, pk):
+    item = get_object_or_404(Listing, pk=pk, user = request.user)
+    item.delete()
+    return redirect('user')
