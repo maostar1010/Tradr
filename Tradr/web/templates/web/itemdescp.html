@@ -6,18 +6,19 @@
 {% block content %}
 <div class="w3-container w3-pale-yellow w3-padding-32 " >
 <div class="w3-row ">
-    <div class="w3-col l3 s6" style="padding:10px 10px" ></div>
-    <div class="w3-container">
-            <div class="w3-display-container">
+    <div class="w3-col l3 s6" style="padding:10px 10px" >
+            <div class="w3-display-container text-center">
             {% with listing_images=listings.images.all %}
             {% if listing_images %}
                 {% with curr_image=listing_images.0.image.url %}
-                <img src="{{ curr_image }}" style="width:20%">
+                <img src="{{ curr_image }}" style="width:90%">
                 {% endwith %}
             {% endif %}
             {% endwith %}
             </div>
-            <div>
+             </div>
+            <div class="w3-col l3 s6" style="padding:10px 10px" >
+            
             <h2>{{listings.title}}</h2>
             <p>Price: {{listings.price}}</p>
             <p>Date: {{listings.date }}</p>
@@ -28,14 +29,6 @@
     </div>
     </div>
 </div>
-
-
-
-
- 
- 
-  
-
 {% endblock content %}
 
 
