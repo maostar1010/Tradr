@@ -15,7 +15,7 @@ urlpatterns=[
     path("search/", search.search, name="search"),
     path("<int:pk>/", item_detail.detail, name="Item-detail"),
     path("<category>/", nav.cat_detail, name="category-detail"),
-    # path("profile/", )
+    path("profile/", view_auth.profile, name="profile"),
 ] 
 
 urlpatterns += staticfiles_urlpatterns()
