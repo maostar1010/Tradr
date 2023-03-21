@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from web.models import Listing, Image, Category
 # Create your views here.
@@ -17,15 +17,25 @@ def home(response):
         })
     return HttpResponseRedirect('/login')
 
-def inbox(response):
-        if response.user.is_authenticated:
-            return render(response, "web/inbox.html", {
-                'inbox' : inbox,
-            })
+def cat_detail(request, category):
+    try:
+        category_obj = get_object_or_404(Category, title__iexact=category)
+        listings = Listing.objects.filter(category=category_obj).select_related('user')
+        images = Image.objects.all()
+    except Category.DoesNotExist:
+        listings = []
+        images = []
 
-def cat_detail(response, category):
     categories = Category.objects.all()
-    # can we filter listings for the specific category chosen here?
-    #  listings = listing....??
-    # then pass the listings and print all of them in the category.html
-    return render(response, "web/category.html", {'category':category, 'categories': categories})
+    
+    return render(request, "web/category.html", {
+        'category': category_obj, 
+        'categories': categories,
+        'listings': listings,
+        'images': images,
+    })
+
+
+
+
+

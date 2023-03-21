@@ -6,4 +6,7 @@ class ListingForm(forms.ModelForm):
 
     class Meta:
         model = Listing
-        fields = ['title', 'price', 'tag', 'description', 'condition']
+        fields = ['title', 'price', 'tag', 'description', 'condition', 'category']
+        widget = {
+            'category' : forms.Select()
+        }
