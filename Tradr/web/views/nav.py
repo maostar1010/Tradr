@@ -11,12 +11,14 @@ def home(response):
         images = Image.objects.all()
         # curr_image = Image.objects.all()
         categories = Category.objects.all()
-
+        
         return render(response, "web\home.html", {
             'listings' : listings,
             'images' : images,
             'categories' : categories,
         })
+    
+    
     return HttpResponseRedirect('/login')
 
 def cat_detail(request, category):
@@ -45,7 +47,7 @@ def user(request):
         listings = []
         images = []
 
-    
+    #print(request)
     return render(request, "web/user.html", {
         'listings': listings,
         'images': images,

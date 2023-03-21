@@ -14,10 +14,10 @@ urlpatterns=[
     path("home/", nav.home, name="home"),
     path('user/', nav.user, name= "user"),
     path("search/", search.search, name="search"),
-    
     path("<int:pk>/", item_detail.detail, name="Item-detail"),
     path("<int:pk>/delete/", item_detail.delete, name="delete"),
     path("<category>/", nav.cat_detail, name="category-detail"),
+    #path("<int:pk>/edit/", item_detail.edit, name ="edit")
     
    
     

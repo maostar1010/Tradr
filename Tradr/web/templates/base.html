@@ -87,18 +87,40 @@
 
     <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
       <a href="/home" class="w3-bar-item w3-button">Home</a>
-      <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
-        Categories 
+      <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+        Categories <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        
+        {% for category in categories %}
+        <div>
+            
+            <a href="/{{category.title}}" class="w3-bar-item w3-button">
+                {{category.title}}
+            </a>
+        </div>
+        {% endfor %}
+  
       </div>
-      <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium"></div>
+
+
+
+
+      <!-- <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
+        Categories 
+
+        <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium"></div>
             {% for category in categories %}
             <div>
+                
                 <a href="/{{category.title}}" class="w3-bar-item w3-button">
                     {{category.title}}
                 </a>
             </div>
             {% endfor %}
-        </div>
+        </div> -->
+      </div>
+      
         </div>
         <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
@@ -184,6 +206,32 @@
   
 
 </body>
+<script>
+    // Accordion 
+    function myAccFunc() {
+      var x = document.getElementById("demoAcc");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    
+    // Click on the "Jeans" link on page load to open the accordion for demo purposes
+    document.getElementById("myBtn").click();
+    
+    
+    // Open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+     
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+    </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
