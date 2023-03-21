@@ -85,14 +85,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <!-- <p> </p>move the logout button to top -->
 
     <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
-      <a href="/home" class="w3-bar-item w3-button">Home</a>
+      <a href="/" class="w3-bar-item w3-button">Home</a>
       <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
         Categories 
       </div>
       <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium"></div>
             {% for category in categories %}
                 <div>
-                    <a href="/{{category.title}}" class="w3-bar-item w3-button">
+                    <a href="/category/{{category.title}}" class="w3-bar-item w3-button">
                         {{category.title}}
                     </a>
                 </div>
