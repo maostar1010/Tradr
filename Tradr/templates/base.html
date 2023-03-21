@@ -155,18 +155,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
         <header class="w3-container w3-xlarge">
             <!-- <p class="w3-left">Jeans</p> -->
 
-            <form style="max-width:450px;margin:auto"></form>
+            <form style="max-width:450px;margin:auto" method="get" action="/search">
             <p class="w3-right">
                 <i class="fa w3-margin-right"></i>
                 
                     <div class="input-icons">
                         <i class="fa fa-search icon">
                     </i>
-                        <input class ="input-field"
-                            type="text" 
-                            placeholder="Search">
+                        <input class ="input-field" name = "query" type="text" placeholder="Search" value="{{query}}">
                     </div>
-            
+                </form>
             <!-- <i class="fa fa-search"></i>
             <input class="input-field" type = "text" placeholder="Search.."> -->
             
