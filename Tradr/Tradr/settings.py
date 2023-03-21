@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 'web.apps.WebConfig',
     'crispy_forms',
     'web',
+    'conversation',
 ]
 
 MIDDLEWARE = [

@@ -3,7 +3,7 @@ from .views import nav, view_auth, search, item_detail
 from .views.create_listing import CreateListing
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-
+app_name = 'web'
 
 urlpatterns=[
     path("", nav.home, name="home"),
