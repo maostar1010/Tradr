@@ -15,7 +15,7 @@ urlpatterns=[
     path('user/', nav.user, name= "user"),
     path("search/", search.search, name="search"),
     path("item/<int:pk>/", item_detail.detail, name="Item-detail"),
-    path("<int:pk>/delete/", item_detail.delete, name="delete"),
+    path("item/<int:pk>/delete/", item_detail.delete, name="delete"),
     path("category/<category>/", nav.cat_detail, name="category-detail"),
     # path("profile/", view_auth.profile, name="profile"),
     path("inbox/", include('conversation.urls')),

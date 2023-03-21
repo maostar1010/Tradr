@@ -8,7 +8,7 @@
 <div class="w3-row ">
     <div class="w3-col l3 s6" style="padding:10px 10px" >
             <div class="w3-display-container text-center">
-            {% with listing_images=listings.images.all %}
+            {% with listing_images=listing.images.all %}
             {% if listing_images %}
                 {% with curr_image=listing_images.0.image.url %}
                 <img src="{{ curr_image }}" style="width:90%">
@@ -19,13 +19,13 @@
              </div>
             <div class="w3-col l3 s6" style="padding:10px 10px" >
             
-            <h2>{{listings.title}}</h2>
-            <p>Price: {{listings.price}}</p>
-            <p>Date: {{listings.date }}</p>
-            <p>Description: {{listings.description }}</p>
-            <p>condition : {{listings.condition  }}</p>
-            <p> category : {{listings.category }}</p> 
-            <a href="{% url 'delete' listings.id %}">Delete</a> 
+            <h2>{{listing.title}}</h2>
+            <p>Price: {{listing.price}}</p>
+            <p>Date: {{listing.date }}</p>
+            <p>Description: {{listing.description }}</p>
+            <p>condition : {{listing.condition  }}</p>
+            <p> category : {{listing.category }}</p> 
+            <a href="/item/{{listing.id}}/delete">Delete</a> 
             </div>
     </div>
     </div>

@@ -84,7 +84,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <img src="/static/web/images/logo.png" alt="Homepage" style="width:100%"></a>
     </div>
 
-    <p class="w3-bar-block w3-white w3-left-align w3-padding-large">Welcome  <a href="/profile/{{user}}"><i class="text-info">{{request.user.username|title}}</i>!</a>
+    <p class="w3-bar-block w3-white w3-left-align w3-padding-large">Welcome  <a href="/user"><i class="text-info">{{request.user.username|title}}</i>!</a>
     <br><br><a href="/logout">Log out</a> 
     </p>
     <!-- <p> </p>move the logout button to top -->
@@ -124,14 +124,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
                     </a>
                 </div>
             {% endfor %}
-        </div> -->
-      </div>
+        </div> 
+      </div>-->
       
-        </div>
+    </div>
         <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
     <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a> -->
-    <a href="/logout"><button>Log out</button></a> <!-- move the logout button to top -->
+    <!-- <a href="/logout"><button>Log out</button></a> move the logout button to top -->
     </nav>
 
     <!-- Top menu on small screens -->
@@ -172,34 +172,36 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
             
             </p>
         </header>
-<!-- 
-    <main role="main" class="container-xl">
-        <div class="row">
-            <div class="col-lg-12 col-md-12-p-0 col-sm-12"> -->
-                {% block content %}
-                {% endblock %}
-            <!-- </div>
+        <!-- 
+            <main role="main" class="container-xl">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12-p-0 col-sm-12"> -->
+                        {% block content %}
+                        {% endblock %}
+                    <!-- </div>
+                </div>
+            </main> -->
+
+            <!-- Prism JS -->
+            <!-- <script src="{% static 'prism.js' %}"></script> -->
+
+            <!-- Bootstrap JS -->
+            <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+                integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+                crossorigin="anonymous"></script> -->
+
+            <!-- Optional JavaScript -->
+            <!-- <script type="text/javascript" src="{% static 'main/custom.js' %}"></script> -->
+            
+        <!-- Make a Post section -->
+        <div class="w3-container w3-sand"  style="margin-left:250px text-center" >
+        
+            <h1>Want To Make A Posting?</h1>
+            <p>Post things that you would like to sell with little to no efforts and make a deal!</p>
+            <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p> -->
+            <button type="button" class="w3-button w3-deep-orange w3-margin-bottom"><a href="/create_listing">Make a Posting</a></button>
         </div>
-    </main> -->
-
-    <!-- Prism JS -->
-    <!-- <script src="{% static 'prism.js' %}"></script> -->
-
-    <!-- Bootstrap JS -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-        crossorigin="anonymous"></script> -->
-
-    <!-- Optional JavaScript -->
-    <!-- <script type="text/javascript" src="{% static 'main/custom.js' %}"></script> -->
-<!-- Make a Post section -->
-<div class="w3-container w3-sand"  style = "margin: 12%  text-center" >
-    
-    <h1>Want To Make A Posting?</h1>
-    <p>Post things that you would like to sell with little to no efforts and make a deal!</p>
-    <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p> -->
-    <button type="button" class="w3-button w3-deep-orange w3-margin-bottom"><a href="/create_listing">Make a Posting</a></button>
-  </div>
+    </div>
   
   <div class="w3-container w3-win8-sienna w3-center w3-padding-24">©Tradr'23 </div>
   

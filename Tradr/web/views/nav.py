@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
-from web.models import Listing, Image, Category
-from django.contrib.auth.models import User
+from web.models import Listing, Image, Category, User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -38,6 +37,7 @@ def cat_detail(request, category):
         'listings': listings,
         'images': images,
     })
+
 @login_required
 def user(request):
     try:
