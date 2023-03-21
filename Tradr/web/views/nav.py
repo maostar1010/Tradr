@@ -1,6 +1,8 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from web.models import Listing, Image, Category
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(response):
@@ -15,6 +17,8 @@ def home(response):
             'images' : images,
             'categories' : categories,
         })
+    
+    
     return HttpResponseRedirect('/login')
 
 def cat_detail(request, category):
@@ -34,8 +38,20 @@ def cat_detail(request, category):
         'listings': listings,
         'images': images,
     })
+@login_required
+def user(request):
+    try:
+        listings = Listing.objects.filter(user= request.user)
+        images = Image.objects.all()
+    except Category.DoesNotExist:
+        listings = []
+        images = []
 
-
+    #print(request)
+    return render(request, "web/user.html", {
+        'listings': listings,
+        'images': images,
+    })
 
 
 
