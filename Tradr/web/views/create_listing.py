@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from ..forms.form_listing import ListingForm
 from ..models import Listing, Image, Category
+from django.contrib import messages 
 
 class CreateListing(View):
     def get(self, request):
@@ -18,7 +19,7 @@ class CreateListing(View):
             for image in request.FILES.getlist('images'):
                 Image.objects.create(listing=listing, image=image)
             form = ListingForm()
-            message = "Listing created successfully."
+            messages.success(request, "Listing created successfully.")
         else:
-            message = "Please correct the errors below."
-        return render(request, 'web/create_listing.html', {'form': form, 'message': message})
+            messages.error(request, "Please correct the errors below.")
+        return render(request, 'web/create_listing.html', {'form': form})

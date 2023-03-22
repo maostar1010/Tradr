@@ -14,15 +14,16 @@ def register(response):
     if response.method == "POST":
         form = UserRegForm(response.POST)
         if form.is_valid():
-            form.save()
+            inactive_user = send_verification_email(response, form)
+            # form.save()
             email       = form.cleaned_data.get('email')
-            raw_pass    = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password = raw_pass)
-            auth_login(response, user)
-            messages.success(response, "You have been registered as {}".format(response.user.username))
+            # raw_pass    = form.cleaned_data.get('password1')
+            # user = authenticate(email=email, password = raw_pass)
+            # auth_login(response, user)
+            messages.success(response, "A verification email has been sent to {}. Please verify your email within the next 5 minutes using the link included in the email.".format(email))
             return redirect('/')
         else:
-            messages.error(response, "Error: please correct the errors")
+            messages.error(response, "Error: please correct the indicated errors")
             form = UserRegForm()
     else:
         form = UserRegForm()
@@ -95,7 +96,7 @@ def logout(response):
 
 def profile(response):
     if not response.user.is_authenticated:
-        return redirect('login')
+        return redirect('/login')
     
     if response.method == 'POST':
         form = UserUpdateForm(response.POST, instance = response.user)

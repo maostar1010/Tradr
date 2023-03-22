@@ -18,7 +18,7 @@ def home(response):
         })
     
     
-    return HttpResponseRedirect('/login')
+    return HttpResponseRedirect('login')
 
 def cat_detail(request, category):
     try:
