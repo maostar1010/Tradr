@@ -25,7 +25,9 @@
             <p>Description: {{listing.description }}</p>
             <p>condition : {{listing.condition  }}</p>
             <p> category : {{listing.category }}</p> 
-            <a href="/item/{{listing.id}}/delete">Delete</a> 
+            {% if request.user == listing.user %}
+            <a href="/item/{{listing.id}}/delete">Delete</a>
+            {%endif%} 
             </div>
     </div>
     </div>
