@@ -3,6 +3,8 @@ from django.views import View
 from ..forms.form_listing import ListingForm
 from ..forms.form_complaint import ComplaintForm
 from ..models import Listing, Complaint
+from django.contrib import messages 
+
 
 class CreateComplaint(View):
     def get(self, request, listing_id):
@@ -18,5 +20,6 @@ class CreateComplaint(View):
             complaint.user = request.user
             complaint.listing = listing
             complaint.save()
-            return redirect('home') # replace with your success URL
+            messages.success(request, "Complaint received. Thank you for your feedback.")
+            return redirect('/') # replace with your success URL
         return render(request, 'complaint_form.html', {'form': form, 'listing': listing})

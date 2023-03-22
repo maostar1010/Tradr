@@ -48,8 +48,16 @@
             <p class="thick"> Category : 
                 <p>{{listing.category}}</p>
             </p>  -->
+            
             <p>{{listing.date}}</p>
-            <p><a href="/inbox/new/{{listing.id}}">Contact Seller</a></p>
+
+            <p><a href="/inbox/new/{{listing.id}}">Contact the Seller</a></p>
+            
+            <p><a href="/complaint/create/{{listing.id}}">Report this posting</a></p>
+
+            <p><a href="/reviews/create/{{listing.id}}">Review {{listing.user.username}}</a></p>
+
+            <!-- delete button only visible to the posting owner -->
             {% if request.user == listing.user %}
             <a href="/item/{{listing.id}}/delete">Delete</a>
             {%endif%} 
