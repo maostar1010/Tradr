@@ -49,6 +49,7 @@
                 <p>{{listing.category}}</p>
             </p>  -->
             <p>{{listing.date}}</p>
+            <p><a href="/inbox/new/{{listing.id}}">Contact Seller</a></p>
             {% if request.user == listing.user %}
             <a href="/item/{{listing.id}}/delete">Delete</a>
             {%endif%} 

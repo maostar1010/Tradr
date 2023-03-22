@@ -10,8 +10,8 @@ from .models import Conversation
 def new_conversation(request, listing_pk):
     listing = get_object_or_404(Listing, pk=listing_pk)
 
-    if listing.created_by == request.user:
-        return redirect('dashboard:index')
+    if listing.user == request.user:
+        return redirect('conversation:inbox')
     
     conversations = Conversation.objects.filter(listing=listing).filter(members__in=[request.user.id])
 
@@ -24,7 +24,7 @@ def new_conversation(request, listing_pk):
         if form.is_valid():
             conversation = Conversation.objects.create(listing=listing)
             conversation.members.add(request.user)
-            conversation.members.add(listing.created_by)
+            conversation.members.add(listing.user)
             conversation.save()
 
             conversation_message = form.save(commit=False)
@@ -32,7 +32,7 @@ def new_conversation(request, listing_pk):
             conversation_message.created_by = request.user
             conversation_message.save()
 
-            return redirect('listing:detail', pk=listing_pk)
+            return redirect('web:Item-detail', pk=listing_pk)
     else:
         form = ConversationMessageForm()
     
