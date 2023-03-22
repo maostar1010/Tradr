@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
-from web.models import Listing
+from web.models import Listing, Category
 
 from .forms import ConversationMessageForm
 from .models import Conversation
@@ -43,9 +43,10 @@ def new_conversation(request, listing_pk):
 @login_required
 def inbox(request):
     conversations = Conversation.objects.filter(members__in=[request.user.id])
-
+    categories = Category.objects.all()
     return render(request, 'conversation/inbox.html', {
-        'conversations': conversations
+        'conversations': conversations,
+        'categories': categories,
     })
 
 @login_required

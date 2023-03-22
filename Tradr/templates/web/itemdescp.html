@@ -4,33 +4,57 @@
 
 
 {% block content %}
-<div class="w3-container w3-pale-yellow w3-padding-32 " >
-<div class="w3-row ">
-    <div class="w3-col l3 s6" style="padding:10px 10px" >
+<div class="w3-container w3-light-grey w3-padding-32 " >
+    <div class="w3-row ">
+        <div class="w3-col s6" style="padding:5px 10px" >
             <div class="w3-display-container text-center">
-            {% with listing_images=listing.images.all %}
-            {% if listing_images %}
-                {% with curr_image=listing_images.0.image.url %}
-                <img src="{{ curr_image }}" style="width:90%">
+                {% with listing_images=listing.images.all %}
+                {% if listing_images %}
+                    {% with curr_image=listing_images.0.image.url %}
+                    <img src="{{ curr_image }}" style="width:200%">
+                    {% endwith %}
+                {% endif %}
                 {% endwith %}
-            {% endif %}
-            {% endwith %}
             </div>
-             </div>
-            <div class="w3-col l3 s6" style="padding:10px 10px" >
+        <!-- </div>
+        <div class="w3-col l3 s6" style="padding:5px 10px" > -->
             
-            <h2>{{listing.title}}</h2>
-            <p>Price: {{listing.price}}</p>
-            <p>Date: {{listing.date }}</p>
-            <p>Description: {{listing.description }}</p>
-            <p>condition : {{listing.condition  }}</p>
-            <p> category : {{listing.category }}</p> 
+            <h1>{{listing.title}}</h1> 
+            <table>
+                <tr>
+                    <th>Price</th>
+                    <td>${{listing.price}}</td>
+                </tr>
+                <tr>
+                    <th>Condition</th>
+                    <td>{{listing.condition}}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{listing.description}}</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>{{listing.category}}</td>
+                </tr>
+            </table>
+            <!-- <p class="thick" style="font-size:1.25em"></p>
+            <p class="thick">Description:<br>
+                <p></p>
+            </p>
+            <p class="thick"> Condition : 
+                <p>{{listing.condition}}</p>
+            </p>
+            <p class="thick"> Category : 
+                <p>{{listing.category}}</p>
+            </p>  -->
+            <p>{{listing.date}}</p>
             {% if request.user == listing.user %}
             <a href="/item/{{listing.id}}/delete">Delete</a>
             {%endif%} 
-            </div>
+        </div>
     </div>
-    </div>
+</div>
 <!-- </div> -->
 {% endblock content %}
 
