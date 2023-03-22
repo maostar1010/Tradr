@@ -47,10 +47,12 @@ def user(request):
         listings = []
         images = []
 
-    #print(request)
+    categories = Category.objects.all()
+
     return render(request, "web/user.html", {
         'listings': listings,
         'images': images,
+        'categories': categories,
     })
 
 
