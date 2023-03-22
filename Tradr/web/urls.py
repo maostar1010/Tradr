@@ -1,6 +1,8 @@
 from django.urls import path, include
 from .views import nav, view_auth, search, item_detail
+from .views.create_complaint import CreateComplaint
 from .views.create_listing import CreateListing
+from .views.create_review import create_review
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 app_name = 'web'
@@ -19,6 +21,8 @@ urlpatterns=[
     path("category/<category>/", nav.cat_detail, name="category-detail"),
     # path("profile/", view_auth.profile, name="profile"),
     path("inbox/", include('conversation.urls')),
+    path('complaint/create/<int:listing_id>/', CreateComplaint.as_view(), name='create_complaint'),
+    path('reviews/create/<int:listing_id>/', create_review, name='create_review'),
 ] 
 
 urlpatterns += staticfiles_urlpatterns()
