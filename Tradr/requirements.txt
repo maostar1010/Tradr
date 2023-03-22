@@ -2,3 +2,5 @@ django==3.1.6
 mysqlclient==2.1.1
 django-crispy-forms==1.14.0
 Pillow==9.4.0
+django-verify-email==2.0.3
+django-environ==0.10.0
