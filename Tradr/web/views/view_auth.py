@@ -1,14 +1,33 @@
 from web.models import User
+from verify_email.email_handler import send_verification_email
+from web.forms.form_registration import UserRegForm, UserAuthenticationForm, UserUpdateForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from web.forms.form_registration import UserRegForm, UserAuthenticationForm, UserUpdateForm
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.forms import AuthenticationForm
 
 
 # Create your views here.
+
+def register(response):
+    if response.method == "POST":
+        form = UserRegForm(response.POST)
+        if form.is_valid():
+            inactive_user = send_verification_email(response, form)
+            # form.save()
+            email       = form.cleaned_data.get('email')
+            # raw_pass    = form.cleaned_data.get('password1')
+            # user = authenticate(email=email, password = raw_pass)
+            # auth_login(response, user)
+            messages.success(response, "A verification email has been sent to {}. Please verify your email within the next 5 minutes using the link included in the email.".format(email))
+            return redirect('/')
+        else:
+            messages.error(response, "Error: please correct the indicated errors")
+            form = UserRegForm()
+    else:
+        form = UserRegForm()
+    return render(response, "web/register.html", {'form': form})
 
 def login(response):
 
@@ -75,52 +94,9 @@ def logout(response):
     
     # return render(response, "web\logout.html", {})
 
-def register(response):
-    if response.method == "POST":
-        form = UserRegForm(response.POST)
-        if form.is_valid():
-            form.save()
-            email       = form.cleaned_data.get('email')
-            raw_pass    = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password = raw_pass)
-            auth_login(response, user)
-            messages.success(response, "You have been registered as {}".format(response.user.username))
-            return redirect('/')
-        else:
-            messages.error(response, "Error: please correct the errors")
-            form = UserRegForm()
-    else:
-        form = UserRegForm()
-
-    
-    # if already logged in, go to homepage
-    # if response.user.is_authenticated:
-    #     # return redirect('/')
-
-    #     # temporary logout
-    #     auth_logout(response)
-        
-    # # storing the info entered
-    # if response.method =="POST":
-    #     form = UserRegForm(response.POST)
-    #     if form.is_valid(): # django default authentication
-    #         user = form.save() # saving the info
-    #         auth_login(response, user) # log in using the registered info
-    #         messages.success(response, f"New account created: {user.username}")
-    #         return redirect('/') # redirect to home page
-
-    #     else:
-    #         for error in list(form.errors.values()):
-    #             messages.error(response, error)
-
-    # else:
-    #     form = UserRegForm()
-
-    return render(response, "web/register.html", {'form': form})
-
 def profile(response):
     if not response.user.is_authenticated:
-        return redirect('login')
+        return redirect('/login')
     
     if response.method == 'POST':
         form = UserUpdateForm(response.POST, instance = response.user)

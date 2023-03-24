@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Hello hotty</h1>
+<h1>Search results</h1>
 
 
 <div class="w3-container">
+  {% if listings is none %}
+    <h2>No results</h2>
+  {% endif %}
     {% for listing in listings %}
-    <a href="{% url 'Item-detail' listing.id %}">
+    <a href="/item/{{listing.id}}">
         <div class="w3-display-container">
           {% with listing_images=listing.images.all %}
             {% if listing_images %}

@@ -6,7 +6,9 @@ class ListingForm(forms.ModelForm):
 
     class Meta:
         model = Listing
-        fields = ['title', 'price', 'tag', 'description', 'condition', 'category']
+        fields = ['title', 'price', 'condition', 'description', 'category',]
         widget = {
-            'category' : forms.Select()
+            'category' : forms.Select(),
+            'condition' : forms.Select(),
+            'description': forms.Textarea(attrs={"rows": 7, "cols": 40}),
         }
