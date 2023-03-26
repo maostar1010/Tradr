@@ -20,6 +20,7 @@ class CreateListing(View):
                 Image.objects.create(listing=listing, image=image)
             form = ListingForm()
             messages.success(request, "Listing created successfully.")
+            return redirect("/")
         else:
             messages.error(request, "Please correct the errors below.")
         return render(request, 'web/create_listing.html', {'form': form})

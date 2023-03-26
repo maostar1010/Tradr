@@ -90,6 +90,10 @@ class Image(models.Model):
     def __str__(self):
         return f"Image for {self.listing.title}: {self.image.name}"
     
+    def delete(self, *args, **kwargs):
+        print(self) # delete later
+        self.image.delete()
+        super().delete(*args, **kwargs)
 
 class ListingCategory(models.Model):
     listing = models.ForeignKey(Listing,on_delete=models.CASCADE)
