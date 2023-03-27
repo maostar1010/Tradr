@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
 <title>
     {% block title %}
@@ -70,8 +69,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <body class="w3-content" style="max-width:1200px">
     
-<!-- Sidebar/menu -->
-  <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+Sidebar/menu
+  <nav  class="w3-sidebar w3-margin-right w3-margin-right  w3-bar-block w3-white w3-collapse w3-top " style="z-index:3;width:250px" id="mySidebar">
     <div class="w3-container w3-display-container w3-padding-16">
       <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
       <a href="/">
@@ -82,13 +81,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <br><a href="/inbox">Inbox</a> 
     <br><br><a href="/logout">Log out</a> 
     </p>
-    <!-- <p> </p>move the logout button to top -->
 
-    <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
-      <!-- <a href="/" class="w3-bar-item w3-button">Home</a>
-      <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
-        Categories  -->
-      <a href="/home" class="w3-bar-item w3-button">Home</a>
+     <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
+       <a href="/home" class="w3-bar-item w3-button">Home</a>
       <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
         Categories <i class="fa fa-caret-down"></i>
       </a>
@@ -105,7 +100,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
       </div>
 
-
+ 
 
 
       <!-- <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
@@ -197,15 +192,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
             <!-- Optional JavaScript -->
             <!-- <script type="text/javascript" src="{% static 'main/custom.js' %}"></script> -->
             
-        <!-- Make a Post section -->
-        <div class="w3-container w3-sand"  style="margin-left:250px text-center" >
-        
-            <h1>Want To Make A Posting?</h1>
-            <p>Post things that you would like to sell with little to no efforts and make a deal!</p>
-            <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p> -->
-            <button type="button" class="w3-button w3-deep-orange w3-margin-bottom"><a href="/create_listing">Make a Posting</a></button>
-        </div>
-    </div>
   
   <div class="w3-container w3-win8-sienna w3-center w3-padding-24">©Tradr'23 </div>
   
