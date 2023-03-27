@@ -7,13 +7,13 @@ import os
 def detail(request, pk):
     listing = get_object_or_404(Listing ,pk = pk)
     images =  Image.objects.filter(listing_id=pk)
-    print(images)
+    # print(images)
     categories = Category.objects.all()
 
 
     return render(request, "web/itemdescp.html", {
         'listing': listing,
-        'I':images,
+        'images':images,
         'categories':categories,
     })
 

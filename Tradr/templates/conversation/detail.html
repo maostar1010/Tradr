@@ -10,7 +10,7 @@
         <div class="p-6 flex {% if message.created_by == request.user %}bg-blue-100{% else %}bg-gray-100{% endif %} rounded-xl">
             <div>
                 <p class="mb-4"><strong>{{ message.created_by.username }}</strong> @ {{ message.created_at }}</p>
-                <p>{{ message.content }}</p>
+                <p>{{ message.message }}</p>
             </div>
         </div>
     {% endfor %}

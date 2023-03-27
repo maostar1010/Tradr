@@ -8,6 +8,7 @@ from .models import Conversation
 
 @login_required
 def new_conversation(request, listing_pk):
+    categories = Category.objects.all()
     listing = get_object_or_404(Listing, pk=listing_pk)
 
     if listing.user == request.user:
@@ -17,6 +18,9 @@ def new_conversation(request, listing_pk):
 
     if conversations:
         return redirect('conversation:detail', pk=conversations.first().id)
+    
+    else:
+        form = ConversationMessageForm()
 
     if request.method == 'POST':
         form = ConversationMessageForm(request.POST)
@@ -33,11 +37,10 @@ def new_conversation(request, listing_pk):
             conversation_message.save()
 
             return redirect('web:Item-detail', pk=listing_pk)
-    else:
-        form = ConversationMessageForm()
     
     return render(request, 'conversation/new.html', {
-        'form': form
+        'form': form,
+        'categories': categories,
     })
 
 @login_required
@@ -51,6 +54,7 @@ def inbox(request):
 
 @login_required
 def detail(request, pk):
+    categories = Category.objects.all()
     conversation = Conversation.objects.filter(members__in=[request.user.id]).get(pk=pk)
 
     if request.method == 'POST':
@@ -70,5 +74,6 @@ def detail(request, pk):
 
     return render(request, 'conversation/detail.html', {
         'conversation': conversation,
-        'form': form
+        'form': form,
+        'categories': categories,
     })

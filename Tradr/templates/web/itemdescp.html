@@ -1,41 +1,73 @@
 {% extends "base.html" %}
 
-{% block title %} {{listings.title}}  {% endblock %}
+{% block title %} {{listings.title}}  {% endblock title %}
 
 
 {% block content %}
 <div class="w3-container w3-light-grey w3-padding-32 " >
     <div class="w3-row ">
-        <div class="w3-col s6" style="padding:5px 10px" >
-            <div class="w3-display-container text-center">
-                {% with listing_images=listing.images.all %}
-                {% if listing_images %}
-                    {% with curr_image=listing_images.0.image.url %}
-                    <img src="{{ curr_image }}" style="width:200%">
-                    {% endwith %}
-                {% endif %}
-                {% endwith %}
-            </div>
+        <div class="w3-col s6" style="padding:10px" >
+           <!-- Carousel Wrapper -->
+           <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    {% for i in images %}
+                    <li data-target="#carousel-example-1z" data-slide-to="{{forloop.counter0}}" 
+                        class="{% if forloop.counter0 == 0 %} active {% endif %}"></li> 
+                    {% endfor %}
+                </ol>
+                <!-- /.Indicators -->
+                <!-- Slides -->
+                <div class="carousel-inner" role="listbox">
+                    {% for i in images %}
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif%}">
+                        <img class="d-block w-100" src="{{i.image.url}}"
+                            alt="First slide">
+                    </div>
+                    {% endfor %}
+                    <!-- /First slide -->
+                <!-- /.Slides -->
+                <!-- Controls -->
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!-- /.Controls -->
+                </div>
+            
+           </div>
+           
+           
+            <!-- <div class="w3-display-container text-center">
+               
+            </div> -->
+
+
+
         <!-- </div>
         <div class="w3-col l3 s6" style="padding:5px 10px" > -->
             
-            <h1>{{listing.title}}</h1> 
+            <h1 style="padding:10px">{{listing.title}}</h1> 
             <table>
                 <tr>
-                    <th>Price</th>
-                    <td>${{listing.price}}</td>
+                    <th style="text-align: left; vertical-align: top; padding: 10px;">Price</th>
+                    <td style="padding:10px">${{listing.price}}</td>
                 </tr>
                 <tr>
-                    <th>Condition</th>
-                    <td>{{listing.condition}}</td>
+                    <th style="text-align: left; vertical-align: top; padding:10px;">Condition</th>
+                    <td style="padding:10px">{{listing.condition}}</td>
                 </tr>
                 <tr>
-                    <th>Description</th>
-                    <td>{{listing.description}}</td>
+                    <th style="text-align: left; vertical-align: top; padding:10px;">Description</th>
+                    <td style="padding:10px">{{listing.description}}</td>
                 </tr>
                 <tr>
-                    <th>Category</th>
-                    <td>{{listing.category}}</td>
+                    <th style="text-align: left; vertical-align: top; padding:10px;">Category</th>
+                    <td style="padding:10px">{{listing.category}}</td>
                 </tr>
             </table>
             <!-- <p class="thick" style="font-size:1.25em"></p>

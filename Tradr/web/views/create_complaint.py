@@ -10,7 +10,7 @@ class CreateComplaint(View):
     def get(self, request, listing_id):
         listing = Listing.objects.get(id=listing_id)
         form = ComplaintForm(initial={'listing': listing}, user=request.user, listing=listing)
-        return render(request, 'complaint_form.html', {'form': form, 'listing': listing})
+        return render(request, 'web/complaint_form.html', {'form': form, 'listing': listing})
 
     def post(self, request, listing_id):
         listing = Listing.objects.get(id=listing_id)
@@ -22,4 +22,4 @@ class CreateComplaint(View):
             complaint.save()
             messages.success(request, "Complaint received. Thank you for your feedback.")
             return redirect('/') # replace with your success URL
-        return render(request, 'complaint_form.html', {'form': form, 'listing': listing})
+        return render(request, 'web/complaint_form.html', {'form': form, 'listing': listing})
