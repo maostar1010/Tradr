@@ -72,3 +72,5 @@ def detail(request, pk):
         'conversation': conversation,
         'form': form
     })
+
+//Some of this code has been taken from https://www.youtube.com/watch?v=ZxMB6Njs3ck&t=7724s and modified for this website
