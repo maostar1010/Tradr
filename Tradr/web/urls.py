@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import nav, view_auth, search, item_detail
+from .views import nav, view_auth, search, item_detail, create_listing
 from .views.create_complaint import CreateComplaint
 from .views.create_listing import CreateListing
 from .views.create_review import create_review
@@ -18,6 +18,7 @@ urlpatterns=[
     path("search/", search.search, name="search"),
     path("item/<int:pk>/", item_detail.detail, name="Item-detail"),
     path("item/<int:pk>/delete/", item_detail.delete, name="delete"),
+    path("item/<int:pk>/edit/", item_detail.edit, name="edit"),
     path("category/<category>/", nav.cat_detail, name="category-detail"),
     # path("profile/", view_auth.profile, name="profile"),
     path("inbox/", include('conversation.urls')),

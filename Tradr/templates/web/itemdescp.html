@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+
+
 {% block title %} {{listings.title}}  {% endblock title %}
 
 
@@ -83,15 +85,18 @@
             
             <p>{{listing.date}}</p>
 
+            {% if request.user != listing.user %}
+
             <p><a href="/inbox/new/{{listing.id}}">Contact the Seller</a></p>
             
             <p><a href="/complaint/create/{{listing.id}}">Report this posting</a></p>
 
             <p><a href="/reviews/create/{{listing.id}}">Review {{listing.user.username}}</a></p>
-
+            {%endif%} 
             <!-- delete button only visible to the posting owner -->
             {% if request.user == listing.user %}
             <a href="/item/{{listing.id}}/delete">Delete</a>
+            <a href="/item/{{listing.id}}/edit">Edit</a>
             {%endif%} 
         </div>
     </div>
