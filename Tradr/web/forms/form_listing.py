@@ -21,7 +21,9 @@ class EditlistingForm(forms.ModelForm):
 
     class Meta:
         model = Listing
-        fields = ['title', 'price', 'description']
+        fields = ['title', 'price', 'description', 'condition', 'category']
         widget = {
             'description': forms.Textarea(attrs={"rows": 7, "cols": 40}),
+            'category' : forms.Select(),
+            'condition' : forms.Select(),
         }
