@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import environ
 from pathlib import Path
+from google.oauth2 import service_account
 
 env = environ.Env()
 environ.Env.read_env()
@@ -28,9 +29,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8&ya+4(r%3*g+*&j34u%w*=lqgyw%kf@a9jp5bgiu$)*9u0*&j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+GS_CREDENTIALS =service_account.Credentials.from_service_account_file(os.path.join(BASE_DIR, 'credentials.json'))
+
+
+DEFAULT_FILE_STORAGE = 'Tradr.gcloud.GoogleCloudMediaFileStorage'
+GS_PROJECT_ID = 'tradr-381621'
+GS_BUCKET_NAME = 'tradr_bucket'
+MEDIA_ROOT = "media/"
+UPLOAD_ROOT="media/uploads/"
+MEDIA_URL='http://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 
 
 # Application definition
@@ -47,6 +58,7 @@ INSTALLED_APPS = [
     'web',
     'conversation',
     'verify_email.apps.VerifyEmailConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -138,9 +150,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR/'media', 'static')
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR/'media'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
