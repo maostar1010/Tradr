@@ -80,7 +80,7 @@ class Listing(models.Model):
     # icondition = models.CharField(max_length=200, null=True) # can we make it a drop down menu: new, like-new, mint, used
     category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True, related_name='listing')
     condition = models.ForeignKey(Condition,on_delete=models.CASCADE, null=True, related_name='listing')
-    iamge = models.ImageField(blank=True)
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.title
