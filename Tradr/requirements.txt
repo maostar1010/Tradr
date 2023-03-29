@@ -1,7 +1,9 @@
-django==3.1.6
+django==4.1.7
 mysqlclient==2.1.1
 django-crispy-forms==1.14.0
 Pillow==9.4.0
 django-verify-email==2.0.3
 django-environ==0.10.0
-# django-resized==2.2
+gunicorn==20.1.0
+django_storages==1.13.2
+google_cloud_storage==2.8.0
