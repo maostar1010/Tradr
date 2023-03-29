@@ -92,8 +92,7 @@ class Listing(models.Model):
     
 class Image(models.Model):
     listing = models.ForeignKey(Listing,on_delete=models.CASCADE, null=True, related_name='images')
-    image = models.ImageField(null=False,blank=False,upload_to='static')
-    # post_image = ResizedImageField(size=[500, 300], upload_to='static', blank=True, null=True)
+    image = models.ImageField(null=False,blank=False,upload_to='images')
 
     def __str__(self):
         return f"Image for {self.listing.title}: {self.image.name}"

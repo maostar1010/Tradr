@@ -3,6 +3,7 @@ from django.views import View
 from ..forms.form_listing import ListingForm ,EditlistingForm
 from ..models import Listing, Image, Category
 from django.contrib import messages 
+from django.core.files.storage import default_storage 
 
 class CreateListing(View):
     def get(self, request):
