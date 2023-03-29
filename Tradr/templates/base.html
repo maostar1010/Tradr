@@ -78,16 +78,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <img src="/static/web/images/logo.png" alt="Homepage" style="width:100%"></a>
     </div>
 
-    <p class="w3-bar-block w3-white w3-left-align w3-padding-large">Welcome  <a href="/user"><i class="text-info">{{request.user.username|title}}</i>!</a>
-    <br><a href="/inbox">Inbox</a> 
-    <br><br><a href="/logout">Log out</a> 
-    </p>
+    
     <!-- <p> </p>move the logout button to top -->
 
     <div class="w3-padding-30 w3-large w3-text-grey" style="font-weight:bold">
+     <p class="w3-bar-block w3-white w3-left-align w3-padding-small">Welcome  <a href="/user" class="w3-button"><i class="text-info">{{request.user.username|title}}</i>!</a>
+        </p>
       <!-- <a href="/" class="w3-bar-item w3-button">Home</a>
       <div class="w3-bar-block w3-white w3-left-align w3-padding-large">
         Categories  -->
+        <a href="/inbox" class="w3-bar-item w3-button" >Inbox</a> 
+        <a href="/logout" class="w3-bar-item w3-button">Log out</a> 
       <a href="/home" class="w3-bar-item w3-button">Home</a>
       <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
         Categories <i class="fa fa-caret-down"></i>

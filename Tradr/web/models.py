@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django_resized import ResizedImageField
+# from django_resized import ResizedImageField
 
 # manager for the custom model
 class CustomUserManager(BaseUserManager):
