@@ -11,9 +11,8 @@ class CreateListing(View):
         return render(request, 'web/create_listing.html', {'form': form, 'categories': categories})
 
     def post(self, request):
+        categories = Category.objects.all()
         form = ListingForm(request.POST, request.FILES)
-        print(form)
-
         if form.is_valid():
             listing = form.save(commit=False)
             listing.user = request.user
@@ -23,8 +22,6 @@ class CreateListing(View):
             form = ListingForm()
             messages.success(request, "Listing created successfully.")
             return redirect("/")
-        else:
-            messages.error(request, "Please correct the errors below.")
-        return render(request, 'web/create_listing.html', {'form': form})
-
-
+        # else:
+        #     messages.error(request, "There was an error: please try again.")
+        return render(request, 'web/create_listing.html', {'form': form, 'categories': categories})

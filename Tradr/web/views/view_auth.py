@@ -6,25 +6,27 @@ from django.http import HttpResponse
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
-
+# import re
 
 # Create your views here.
 
 def register(response):
+    # email_validate_pattern = r"^\S+|+@ucalgary.ca"
     if response.method == "POST":
         form = UserRegForm(response.POST)
         if form.is_valid():
+            # if re.match(email_validate_pattern, email):
             inactive_user = send_verification_email(response, form)
-            # form.save()
             email       = form.cleaned_data.get('email')
+            # form.save()
             # raw_pass    = form.cleaned_data.get('password1')
             # user = authenticate(email=email, password = raw_pass)
             # auth_login(response, user)
             messages.success(response, "A verification email has been sent to {}. Please verify your email within the next 5 minutes using the link included in the email.".format(email))
             return redirect('/')
         else:
-            messages.error(response, "Error: please correct the indicated errors")
-            form = UserRegForm()
+            messages.error(response, "Error: please use a valid ucalgary email and check the requirements for the password")
+            # form = UserRegForm()
     else:
         form = UserRegForm()
     return render(response, "web/register.html", {'form': form})

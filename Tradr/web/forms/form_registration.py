@@ -4,6 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 from web.models import User
 from django.contrib.auth import authenticate
 
+def validate_ucalgary_email(value):
+        if value.endswith('ucalgary.ca'):
+            # print("Ucalgary email required")
+            return True
+        else:
+            return False
 class UserRegForm(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'ucalgary email please'}), required=True)
     # phone = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Numbers only please'}))
@@ -16,24 +22,27 @@ class UserRegForm(UserCreationForm):
         super(UserRegForm, self).__init__(*args, **kwargs)
         for field in (self.fields['email'], self.fields['username'], self.fields['password1'], self.fields['password2']):
             field.widget.attrs.update({'class':'form-control'})
+        
+    def clean_email(self):
+        if self.is_valid():
+            email = self.cleaned_data['email']
+            if validate_ucalgary_email(email):
+                try:
+                    user = User.objects.exclude(pk = self.instance.pk).get(email=email)
+                except:
+                    return email
+                raise forms.ValidationError("Email '%s' already in use." %email)
+            else:
+                raise forms.ValidationError("Only ucalgary.ca email allowed")
     
-    # def clean_email(self):
-    #     if self.is_valid():
-    #         email = self.cleaned_data['email']
-    #         try:
-    #             user = User.objects.exclude(pk = self.instance.pk).get(email=email)
-    #         except User.DoesNotExist:
-    #             return email
-    #         raise forms.ValidationError("Email '%s' already in use." %email)
-    
-    # def clean_username(self):
-    #     if self.is_valid():
-    #         username = self.cleaned_data['username']
-    #         try:
-    #             user = User.objects.exclude(pk = self.instance.pk).get(username=username)
-    #         except User.DoesNotExit:
-    #             return username
-    #         raise forms.ValidationError("Username '%s' already in use." %username)
+    def clean_username(self):
+        if self.is_valid():
+            username = self.cleaned_data['username']
+            try:
+                user = User.objects.exclude(pk = self.instance.pk).get(username=username)
+            except:
+                return username
+            raise forms.ValidationError("Username '%s' already in use." %username)
 
 class UserAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
