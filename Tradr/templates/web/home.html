@@ -4,6 +4,33 @@
 {% extends "base.html" %}
 <!-- {% load static %} -->
 
+<style>
+a:link {
+  color: red;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: green;
+  
+}
+
+a:hover {
+  text-decoration: underline;
+  color: hotpink;
+}
+
+a:active {
+  text-decoration: underline;
+  color: blue;
+}
+
+
+
+
+
+</style>
 {% block content %}
 <!-- Image header -->
   <div class="w3-display-container w3-container">
@@ -38,11 +65,13 @@
               <div>
                 <div class="col">
                 <h2>{{listing.title}}</h2>
+                </a>
                 <p>Price: {{listing.price}}</p>
               </div>
             </div>
           </div>
-            </a>
+            
+
           {% endfor %}
         <!-- </div> -->
       </div>

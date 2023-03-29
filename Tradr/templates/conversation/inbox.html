@@ -111,7 +111,6 @@ body{
         border-radius: 50%;
     }
     .inbox-message .message-body {
-        margin-left: 85px;
         font-size: 15px;
         color:#62748F;
     }
@@ -181,7 +180,7 @@ body{
                                     <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""> -->
                                 </div>
                                 <div class="message-body  ">
-                                    <div class="message-body-heading">
+                                    <div class="message-body-heading" style="margin-left: 55px;">
                                         <div>
                                             {% for member in conversation.members.all %}
                                                 {% if member != request.user %}

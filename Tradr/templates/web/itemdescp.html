@@ -1,27 +1,30 @@
-{% extends "base.html" %}
+{% extends "base_wop.html" %}
 
 
 
 {% block title %} {{listings.title}}  {% endblock %}
 
 <style>
-    .new-section {
-        height: 10%;
-        padding-top: 15px;
-        text-align: left;
-        background: #eee;
-        border-radius: 9%;
+    
+   
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 310px;
       }
-      .new-section_other {
-        height: 10%;
-        padding-top: 15px;
-        text-align: right;
-        background: #eee;
-        border-radius: 9%;
+      table td {
+        border: solid 1px #666;
+        width: 110px;
+        word-wrap: break-word;
+        padding: 3rem;
       }
-      .yellow {
-        background-color: yellow;
+      table th{
+        font-size: larger;
       }
+    
+
+
+     
     
     </style>
 
@@ -45,21 +48,27 @@
             <h1>{{listing.title}}</h1> 
             <table>
                 <tr>
-                    <th>Price</th>
-                    <td>${{listing.price}}</td>
+                    <th style="font-size: larger;" >Price:</th>
+                    <td >$ {{listing.price}}</td>
+
                 </tr>
+
                 <tr>
-                    <th>Condition</th>
-                    <td>{{listing.condition}}</td>
+                    <th style="font-size: larger;" class="new-section">Description:</th>
+                    <td style ="padding: 3rem; vertical-align: middle;">{{listing.description}}</td>
                 </tr>
+
+
                 <tr>
-                    <th>Description</th>
-                    <td>{{listing.description}}</td>
+                    <th style= "font-size: larger; margin-bottom: 50px;" >Condition:</th>
+                    <td style ="padding: 3rem;"> {{listing.condition}}</td>
                 </tr>
+
                 <tr>
-                    <th>Category</th>
-                    <td>{{listing.category}}</td>
+                    <th style= "font-size: larger; margin-bottom: 50px;">Category:</th>
+                    <td style ="padding: 3rem;">{{listing.category}}</td>
                 </tr>
+
             </table>
             <!-- <p class="thick" style="font-size:1.25em"></p>
             <p class="thick">Description:<br>
@@ -76,16 +85,16 @@
 
             {% if request.user != listing.user %}
 
-            <p><a href="/inbox/new/{{listing.id}}">Contact the Seller</a></p>
+            <p><a href="/inbox/new/{{listing.id}}" class ="w3-bar-item w3-button">Contact the Seller</a></p>
             
-            <p><a href="/complaint/create/{{listing.id}}">Report this posting</a></p>
+            <p><a href="/complaint/create/{{listing.id}}" class ="w3-bar-item w3-button">Report this posting</a></p>
 
-            <p><a href="/reviews/create/{{listing.id}}">Review {{listing.user.username}}</a></p>
+            <p><a href="/reviews/create/{{listing.id}}" class ="w3-bar-item w3-button">Review {{listing.user.username}}</a></p>
             {%endif%} 
             <!-- delete button only visible to the posting owner -->
             {% if request.user == listing.user %}
-            <a href="/item/{{listing.id}}/delete">Delete</a>
-            <a href="/item/{{listing.id}}/edit">Edit</a>
+            <a href="/item/{{listing.id}}/delete" class ="w3-bar-item w3-button">Delete</a>
+            <a href="/item/{{listing.id}}/edit" class ="w3-bar-item w3-button" >Edit</a>
             {%endif%} 
         </div>
     </div>
