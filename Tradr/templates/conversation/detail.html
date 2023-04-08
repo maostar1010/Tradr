@@ -33,6 +33,7 @@
                 <p class="mb-4"><strong>{{ message.created_by.username }}</strong> @ {{message.created_at}} </p>
                 <p>{{ message.message }}</p>
             </div>
+            {% endif %}
             {% if message.created_by.username == request.user.username %}
             <div style="color: green;" class="new-section_other">
                 <p class="mb-4"><strong>{{ message.created_by.username }}</strong> @ {{message.created_at}} </p>
