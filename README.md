@@ -2,7 +2,7 @@
 University Marketplace where students and faculty members can connect over their needs
 
 
-### To work on the project:
+### To run the project locally:
 **1. Clone (or pull) the repository to a local machine**
 
 **2. Activate the virtual environment**
