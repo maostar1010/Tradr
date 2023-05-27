@@ -13,7 +13,7 @@ University Marketplace where students and faculty members can connect over their
 //Unix/macOS
 source test_env/bin/activate
 ```
-* If you haven't already, run the following codes to install a virtual environment before activating it (only needs to be done once when setting up the workplace for the first time):
+* If you haven't already, run the following codes to **install a virtual environment** before activating it (only needs to be done once when setting up the workplace for the first time):
 ```
 // Windows
 py -m pip install --user virtualenv
